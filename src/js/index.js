@@ -15,10 +15,10 @@ function onKeyDown(e) {
   const KEY_RIGHT = 39;
   const KEY_LEFT = 37;
 
-  if (event.keyCode == KEY_RIGHT && initialX < 400) {
-    initialX += BLOCK_SIZE;
+  if (event.keyCode == KEY_RIGHT && initialX < 320 - (PIECES[index][0].length * 32)) {
+    initialX += BLOCK_SIZE + SPACING;
   } else if (event.keyCode == KEY_LEFT && initialX > 0) {
-    initialX -= BLOCK_SIZE;
+    initialX -= BLOCK_SIZE + SPACING;
   }
 }
 
