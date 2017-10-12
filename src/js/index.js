@@ -5,20 +5,24 @@ var initialY = 0;
 const index = Math.floor(Math.random() * 7);
 setInterval(function() {
   clearCanvas()
+  drawGrid()
   drawPiece(PIECES[index], COLORS[index], initialX, initialY);
-  initialY += BLOCK_SIZE;
+  initialY += 1;
 }, 1000);
 
 
 function onKeyDown(e) {
-  var event = window.event ? window.event : e;
+  let event = window.event ? window.event : e;
   const KEY_RIGHT = 39;
   const KEY_LEFT = 37;
 
-  if (event.keyCode == KEY_RIGHT && initialX < 320 - (PIECES[index][0].length * 32)) {
-    initialX += BLOCK_SIZE + SPACING;
-  } else if (event.keyCode == KEY_LEFT && initialX > 0) {
-    initialX -= BLOCK_SIZE + SPACING;
+  const movementAllowed = canMoveHorizontal(PIECES[index], initialX, initialY)
+
+  console.log('MOVE RIGHT', event.keyCode, KEY_RIGHT, movementAllowed)
+  if (event.keyCode == KEY_RIGHT && movementAllowed.right) {
+    initialX++;
+  } else if (event.keyCode == KEY_LEFT && movementAllowed.left) {
+    initialX--;
   }
 }
 
