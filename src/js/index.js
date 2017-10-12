@@ -1,21 +1,25 @@
-const SPACING = 2;
-const BLOCK_SIZE = 30
+var lastPiece = -1;
+var initialX = 0;
+var initialY = 0;
 
-var canvas = document.getElementById('board')
-var ctx = canvas.getContext('2d');
+const index = Math.floor(Math.random() * 7);
+setInterval(function() {
+  clearCanvas()
+  drawPiece(PIECES[index], COLORS[index], initialX, initialY);
+  initialY += BLOCK_SIZE;
+}, 1000);
 
-function drawPiece(piece, color) {
-  ctx.fillStyle = "rgb(" + color + ")";
-  for (var row = 0; row < piece.length; row++) {
-    var yspace = SPACING * row;
-    for (var column = 0; column < piece[row].length; column++) {
-      if (piece[row][column] == 1) {
-        var xspace = SPACING * column;
-        ctx.fillRect(column * BLOCK_SIZE + xspace, row * BLOCK_SIZE + yspace, BLOCK_SIZE, BLOCK_SIZE);
-      }
-    }
+
+function onKeyDown(e) {
+  var event = window.event ? window.event : e;
+  const KEY_RIGHT = 39;
+  const KEY_LEFT = 37;
+
+  if (event.keyCode == KEY_RIGHT && initialX < 400) {
+    initialX += BLOCK_SIZE;
+  } else if (event.keyCode == KEY_LEFT && initialX > 0) {
+    initialX -= BLOCK_SIZE;
   }
 }
 
-var index = Math.floor(Math.random() * 7)
-drawPiece(PIECES[index], COLORS[index])
+window.addEventListener('keydown', onKeyDown)
