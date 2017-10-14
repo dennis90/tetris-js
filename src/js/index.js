@@ -194,7 +194,7 @@ function canMoveHorizontal(currentPiece, currentPieceX, currentPieceY) {
     }
   }
 
-  const borders = {
+  return {
     left: (currentPieceX + marginLeft - 1) >= 0,
     right: (currentPieceX + currentPiece[0].length - marginRight + 1) <= BOARD_COLS,
   }
