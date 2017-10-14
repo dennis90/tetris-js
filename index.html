@@ -6,12 +6,18 @@
     <link rel="stylesheet" type="text/css" href="src/css/index.css">
   </head>
   <body>
-    <div>
-      <canvas id="board" width="320px" height="510px" />
+    <div class="container">
+      <div class="board">
+        <canvas id="board" width="320px" height="510px" />
+      </div>
+
+      <div class="buttons">
+        <a href="#" onclick="startGame()">Start Game</a>
+        <a href="#" onclick="stopGame()">Stop Game</a>
+      </div>
     </div>
-    <script src="src/js/pieces.js"></script>
-    <script src="src/js/board.js"></script>
-    <script src="src/js/drawing.js"></script>
+    <script src="src/js/constants.js"></script>
+    <!-- <script src="src/js/drawing.js"></script> -->
     <script src="src/js/index.js"></script>
   </body>
 </html>
